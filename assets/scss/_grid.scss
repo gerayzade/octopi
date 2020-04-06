@@ -1,0 +1,121 @@
+// Mappings
+$grid-devices: 				('large': lg, 			'medium': md, 			'small': sm);
+$grid-breakpoint:			('large': 1440px, 	'medium': 1040px, 	'small': 740px);
+$grid-sideMargin:			('large': 60px, 		'medium': 40px, 		'small': 20px);
+$grid-gutter: 				('large': 15px, 		'medium': 15px, 		'small': 15px);
+// Columns
+$grid-cols: 60;
+// Breakpoints
+$break-lg: map-get($grid-breakpoint, 'large');
+$break-md: map-get($grid-breakpoint, 'medium');
+$break-sm: map-get($grid-breakpoint, 'small');
+
+// Functions for grid
+@function get-gutter($device) {
+	$inside: map-get($grid-breakpoint, $device) - (map-get($grid-sideMargin, $device) * 2);
+	@return 100% * (map-get($grid-gutter, $device) / $inside);
+}
+@function get-row-width($device) {
+	$outside: map-get($grid-sideMargin, $device) * 2 / map-get($grid-breakpoint, $device);
+	@return 100% - (100% * $outside);
+}
+@function get-col-width($i, $columns) {
+	@return 100% / $columns * $i;
+}
+
+// Mixins for grid
+@mixin row-props($device, $class: default) {
+	$gutter: get-gutter($device);
+	@if ($class == default) {
+		width: get-row-width($device);
+		&.nested {
+			width: 100%;
+		}
+	} @else {
+		&.#{$class} {
+			@if ($class == padded) {
+				margin-top: $gutter / -2;
+				margin-bottom: $gutter / -2;
+				&:not(:last-child) {
+					margin-bottom: $gutter / 2;
+				}
+			}
+		}
+	}
+}
+@mixin col-props($i, $columns, $gutter) {
+	width: get-col-width($i, $columns);
+	padding: $gutter / 2;
+}
+@mixin col-group($name, $columns, $gutter) {
+	@for $i from 0 through $columns {
+		&-#{$name}-#{$i} {
+			@include col-props($i, $columns, $gutter);
+		}
+
+		&-#{$name}-shift-#{$i} {
+			margin-left: get-col-width($i, $columns);
+		}
+	}
+}
+
+// Mixins for media queries
+@mixin media($for) {
+	@if ($for == 'small') {
+		@media screen and (max-width: $break-sm - 0.1px) {
+			@content;
+		}
+	} @else if ($for == 'small-and-medium') {
+		@media screen and (max-width: $break-md - 0.1px) {
+			@content;
+		}
+	} @else if ($for == 'medium') {
+		@media screen and (min-width: $break-sm) and (max-width: $break-md - 0.1px) {
+			@content;
+		}
+	} @else if ($for == 'medium-and-large') {
+		@media screen and (min-width: $break-sm) {
+			@content;
+		}
+	} @else if ($for == 'large') {
+		@media screen and (min-width: $break-md) {
+			@content;
+		}
+	}
+}
+@each $device in 'small', 'medium', 'large' {
+	@include media($device) {
+		
+	}
+}
+
+// Classes
+.row {
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	flex-wrap: wrap;
+	width: 100%;
+	max-width: $break-lg;
+	
+	@each $device in 'small', 'medium', 'large' {
+		$device-letters: map-get($grid-devices, $device);
+		@include media($device) {
+			@include row-props($device); // width
+			@include row-props($device, padded); // margin
+			.col {
+				@include col-group($device-letters, $grid-cols, get-gutter($device));
+			}
+			@at-root {
+				.hide-#{$device-letters} {
+					display: none !important;
+				}
+			}
+		}
+	}
+
+	&:not(.padded) > [class^=col] {
+		padding-bottom: 0 !important;
+		padding-top: 0 !important;
+	}
+}

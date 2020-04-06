@@ -1,0 +1,78 @@
+@import 'variables';
+@import 'mixins';
+@import 'fonts';
+@import 'reset';
+@import 'grid';
+
+:global {
+
+body {
+  position: relative;
+  font-family: $font-montserrat;
+  color: #000;
+  background-color: #fff;
+  line-height: 1.4;
+  overflow-y: scroll;
+  // :focus {
+  //   outline: none;
+  // }
+}
+
+svg, 
+img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+a {
+  color: $red;
+  text-decoration: none;
+  &,
+  &::before,
+  &::after {
+    transition: .15s;
+  };
+}
+
+h1, 
+h2 {
+  font-size: 24px;
+  @include media('small-and-medium') {
+    font-size: 20px;
+  }
+}
+
+.text {
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+}
+
+.wrapper {
+  overflow-x: hidden;
+}
+
+.content {
+  min-height: calc(100vh - 160px);
+  padding: 10px 0;
+  @include media('large') {
+    padding: 20px 0;
+  }
+}
+
+.header,
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+
+}
