@@ -30,10 +30,47 @@
 :global {
 
 body {
+  background-color: $grey-0;
   font-family: $font-opensans;
 }
 
 // Layout
+
+.wrapper {
+  overflow-x: hidden;
+}
+
+.page-sidebar {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  overflow: auto;
+  height: 100vh;
+  transition: transform .3s, opacity .3s;
+  width: 250px !important;
+  max-width: 100% !important;
+  &.collapsed {
+    transform: translate(-100%);
+  }
+  &:not(.collapsed) + .page-layout {
+    opacity: .3;
+    transform: translate(250px);
+  }
+  &-menu {
+    width: 100%;
+    &-item {
+      padding: 0 32px !important;
+      span {
+        margin-left: -16px;
+      }
+    }
+  }
+}
+
+.page-layout {
+  transition: .3s;
+  transition-property: margin-left, transform;
+}
 
 .logo {
   color: #fff;
@@ -42,18 +79,6 @@ body {
   background: #334454;
   padding: 0 16px;
   margin: 16px 16px 12px;
-}
-
-.page-sidebar {
-  white-space: nowrap;
-  overflow: auto;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-}
-
-.page-layout {
-  margin-left: 250px;
 }
 
 .page-header {
@@ -74,14 +99,20 @@ body {
 
 .page-content {
   margin: 24px auto 0;
-  max-width: 850px;
+  min-height: calc(100vh - 138px);
+  width: 864px;
+  max-width: 100%;
   background-color: #fff;
   padding: 24px;
   overflow: initial;
 }
 
-@media screen and (min-width: $break-lg) {
-  
+@media screen and (min-width: $break-xl) {
+  .page-sidebar:not(.collapsed) + .page-layout {
+    margin-left: 250px;
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
 }

@@ -7,7 +7,7 @@
 }
 
 @mixin font-face($family, $source, $weight, $style: normal) {
-  $path: '/fonts/#{$family}/#{$source}-#{$weight}';
+  $path: '/fonts/#{$source}-#{$weight}';
   $weight-name: map-get($font-weight, $weight);
   @font-face {
     font-family: $family;
