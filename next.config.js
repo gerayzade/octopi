@@ -16,7 +16,9 @@ module.exports = withPlugins(
 		[withFonts, {
 			enableSvg: false
 		}],
-		withSass,
+		[withSass, {
+			
+		}],
 		withPurgeSass
 	], 
 	{

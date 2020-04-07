@@ -1,18 +1,19 @@
-import Layout from '~/components/Layout';
+import dynamic from 'next/dynamic';
+import PageLayout from '~/components/layout';
 
-const Index = ({ hello }) => (
-  <Layout title="Hack Covid-19">
-    <div className="row">
-      <div className="col-lg-60 col-md-60 col-sm-60">
-        {hello}
-      </div>
-    </div>
-  </Layout>
+import routine from '~/lib/routine';
+
+const RoutineSchedule = dynamic(() => 
+  import('../components/calendar/RoutineSchedule'), { ssr: false });
+
+const Index = ({  }) => (
+  <PageLayout title="Daily Plan">
+    <RoutineSchedule events={routine} />
+  </PageLayout>
 )
 
 export const getStaticProps = async () => {
-  const hello = 'Hello Covid'
-  return { props: { hello } };
+  return { props: {  } };
 }
 
 export default Index;

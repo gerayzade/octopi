@@ -1,4 +1,18 @@
+// Breakpoints
+$break-xs: 480px;
+$break-sm: 576px;
+$break-md: 768px;
+$break-lg: 992px;
+$break-xl: 1200px;
+$break-xxl: 1600px;
+
+// Colors
+$grey-1: #e8e8e8;
+$blue-1: #1890ff;
+$blue-2: #e5f3ff;
+
 // Fonts
+$font-opensans: 'Open Sans', sans-serif;
 $font-weight: (
   300: 'Light', 
   400: 'Regular', 
@@ -6,10 +20,3 @@ $font-weight: (
   600: 'Semibold', 
   700: 'Bold'
 );
-$font-sen: 'Sen', sans-serif;
-$font-montserrat: 'Montserrat', sans-serif;
-// Colors
-$red: #bf1e2e;
-$grey: #505050;
-$green: #b4d240;
-$yellow: #ffcc00;

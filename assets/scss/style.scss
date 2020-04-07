@@ -1,78 +1,87 @@
 @import 'variables';
 @import 'mixins';
 @import 'fonts';
-@import 'reset';
-@import 'grid';
+
+/*! purgecss start ignore */
+
+// Ant Design Library
+@import '~antd/dist/antd';
+// Full Calendar
+@import '~@fullcalendar/core/main';
+@import '~@fullcalendar/timegrid/main';
+
+.fc.fc-unthemed {
+  * {
+    border-color: $grey-1;
+  }
+  .fc-today {
+    background-color: $blue-2;
+  }
+  .fc-event {
+    background-color: $blue-1;
+    &.fc-short .fc-title {
+      font-size: 1em;
+    }
+  }
+}
+
+/*! purgecss end ignore */
 
 :global {
 
 body {
-  position: relative;
-  font-family: $font-montserrat;
-  color: #000;
-  background-color: #fff;
-  line-height: 1.4;
-  overflow-y: scroll;
-  // :focus {
-  //   outline: none;
-  // }
+  font-family: $font-opensans;
 }
 
-svg, 
-img {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
+// Layout
+
+.logo {
+  color: #fff;
+  line-height: 30px;
+  text-align: center;
+  background: #334454;
+  padding: 0 16px;
+  margin: 16px 16px 12px;
 }
 
-a {
-  color: $red;
-  text-decoration: none;
-  &,
-  &::before,
-  &::after {
-    transition: .15s;
-  };
+.page-sidebar {
+  white-space: nowrap;
+  overflow: auto;
+  height: 100vh;
+  position: fixed;
+  left: 0;
 }
 
-h1, 
-h2 {
-  font-size: 24px;
-  @include media('small-and-medium') {
-    font-size: 20px;
-  }
+.page-layout {
+  margin-left: 250px;
 }
 
-.text {
-  &-center {
-    text-align: center;
-  }
-  &-right {
-    text-align: right;
-  }
-}
-
-.wrapper {
-  overflow-x: hidden;
-}
-
-.content {
-  min-height: calc(100vh - 160px);
-  padding: 10px 0;
-  @include media('large') {
-    padding: 20px 0;
-  }
-}
-
-.header,
-.footer {
-  width: 100%;
+.page-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 80px;
+  background-color: #fff;
+  padding: 0 16px;
+  h2 {
+    margin: 0 24px;
+  }
 }
 
+.page-footer {
+  font-size: 12px;
+  text-align: center;
+  padding: 16px;
+}
+
+.page-content {
+  margin: 24px auto 0;
+  max-width: 850px;
+  background-color: #fff;
+  padding: 24px;
+  overflow: initial;
+}
+
+@media screen and (min-width: $break-lg) {
+  
+}
 
 }
