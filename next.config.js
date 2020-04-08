@@ -1,8 +1,8 @@
 const withPlugins = require('next-compose-plugins');
 const withImages = require('next-optimized-images');
 const withFonts = require('next-fonts');
-const withSass = require('@zeit/next-sass');
-const withPurgeSass = require('next-purgecss')
+const withLess = require('@zeit/next-less');
+const withPurgeCss = require('next-purgecss');
   
 module.exports = withPlugins(
 	[
@@ -16,14 +16,18 @@ module.exports = withPlugins(
 		[withFonts, {
 			enableSvg: false
 		}],
-		[withSass, {
-			
+		[withLess, {
+			lessLoaderOptions: {
+				javascriptEnabled: true
+			}
 		}],
-		withPurgeSass
+		[withPurgeCss, {
+			purgeCssEnabled: ({ dev, isServer }) => (isServer)
+		}]
 	], 
 	{
 		webpack: (config, { isServer }) => {
-			if(!isServer) {
+			if (!isServer) {
 				config.node = {
 					fs: 'empty'
 				}

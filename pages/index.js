@@ -6,9 +6,11 @@ import routine from '~/lib/routine';
 const RoutineSchedule = dynamic(() => 
   import('~/components/calendar/RoutineSchedule'), { ssr: false });
 
-const Index = ({  }) => (
+const Index = ({ }) => (
   <PageLayout title="Daily Plan">
-    <RoutineSchedule events={routine} />
+    <div className="daily-plan">
+      <RoutineSchedule events={routine} />
+    </div>
   </PageLayout>
 )
 

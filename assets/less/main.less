@@ -1,0 +1,32 @@
+@import 'fonts.less';
+
+/*! purgecss start ignore */
+/*! purgecss end ignore */
+
+// Ant Design
+
+@import '~antd/lib/style/index.less';
+@import 'antd-components.less';
+@import 'antd-custom.less';
+
+// Full Calendar
+
+@import (inline) '~@fullcalendar/core/main.css';
+@import (inline) '~@fullcalendar/timegrid/main.css';
+
+.fc.fc-unthemed {
+  * {
+    border-color: #e8e8e8;
+  }
+  .fc-today {
+    background-color: @primary-1;
+  }
+  .fc-event {
+    background-color: @primary-color;
+    &.fc-short .fc-title {
+      font-size: 1em;
+    }
+  }
+}
+
+@import 'style.less';

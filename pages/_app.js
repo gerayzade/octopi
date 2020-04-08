@@ -4,7 +4,7 @@ import { PageTransition } from 'next-page-transitions';
 import { reduxStore } from '~/store';
 import Loader from '~/components/Loader';
 
-import '~/assets/scss/style.scss';
+import '~/assets/less/main.less';
 
 const TIMEOUT = 400;
 
@@ -15,7 +15,7 @@ const App = ({ Component, pageProps, router, store }) => (
         timeout={TIMEOUT}
         classNames="page-transition"
         loadingComponent={<Loader />}
-        loadingDelay={0}
+        loadingDelay={TIMEOUT + 100}
         loadingTimeout={{ enter: TIMEOUT, exit: 0 }}
         loadingClassNames="loading-indicator"
       >
@@ -44,6 +44,5 @@ const App = ({ Component, pageProps, router, store }) => (
     `}</style>
   </>
 )
-
 
 export default withRedux(reduxStore)(App);
