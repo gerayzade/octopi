@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import { PreloadFonts } from './ResourceLinks';
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
-
-const { Header, Content, Footer, Sider } = Layout;
+import { PreloadFonts } from './ResourceLinks';
+import SidebarMenu from './SidebarMenu';
 
 const PageLayout = ({ children, title }) => {
   // use state hook
@@ -24,26 +23,21 @@ const PageLayout = ({ children, title }) => {
         {/* preload assets */}
         <PreloadFonts />
       </Head>
-      <Layout>
-        <Sider 
+      <Layout hasSider={true}>
+        <Layout.Sider 
           className={'page-sidebar' + (sider.collapsed ? ' collapsed' : '')} 
           theme="dark" 
           width="250"
           breakpoint="xl"
           onBreakpoint={(broken) => setSider({broken: broken, collapsed: broken})}
         >
-          <div className="logo">Chipi Chipi</div>
-          <Menu className="page-sidebar-menu" theme="dark" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" className="page-sidebar-menu-item">
-              <span className="nav-text">{title}</span>
-            </Menu.Item>
-          </Menu>
-        </Sider>
+          <SidebarMenu />
+        </Layout.Sider>
         <Layout 
           className="page-layout" 
           onClick={() => setSider({...sider, collapsed: sider.broken && !sider.collapsed || sider.collapsed})}
         >
-          <Header className="page-header">
+          <Layout.Header className="page-header">
             {React.createElement(sider.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
               className: 'trigger',
               onClick: (e) => {
@@ -52,13 +46,13 @@ const PageLayout = ({ children, title }) => {
               }
             })}
             <h2>{title}</h2>
-          </Header>
-          <Content className="page-content">
+          </Layout.Header>
+          <Layout.Content className="page-content">
             {children}
-          </Content>
-          <Footer className="page-footer">
+          </Layout.Content>
+          <Layout.Footer className="page-footer">
             Estuche Chipi Chipi &copy; HESLAF 2020
-          </Footer>
+          </Layout.Footer>
         </Layout>
       </Layout>
     </div>
