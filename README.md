@@ -1,2 +1,2 @@
-# hackcov19
+# Octopi
 Hack Covid-19

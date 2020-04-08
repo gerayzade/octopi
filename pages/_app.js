@@ -8,7 +8,7 @@ import '~/assets/less/main.less';
 
 const TIMEOUT = 400;
 
-const App = ({ Component, pageProps, router, store }) => (
+const OctopiApp = ({ Component, pageProps, router, store }) => (
   <>
     <Provider store={store}>
       <PageTransition
@@ -45,4 +45,4 @@ const App = ({ Component, pageProps, router, store }) => (
   </>
 )
 
-export default withRedux(reduxStore)(App);
+export default withRedux(reduxStore)(OctopiApp);

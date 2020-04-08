@@ -27,14 +27,14 @@ const PageLayout = ({ children, title }) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* browser tab view */}
-        <title>{title ? 'Chipi Chipi | ' + title : 'Chipi Chipi'}</title>
+        <title>{title ? 'Octopi | ' + title : 'Octopi'}</title>
         <link rel="icon" type="image/png" href="/favicon.png" /> 
         {/* preload assets */}
         <PreloadFonts />
       </Head>
       <Layout hasSider={true}>
         <Layout.Sider className={'page-sidebar' + (sider.collapsed ? ' collapsed' : '')} width="250">
-          <div className="page-sidebar_logo">Chipi Chipi</div>
+          <div className="page-sidebar_logo">Octopi 🐙</div>
           <SidebarMenu />
         </Layout.Sider>
         <Layout 
@@ -51,7 +51,7 @@ const PageLayout = ({ children, title }) => {
             {children}
           </Layout.Content>
           <Layout.Footer className="page-footer">
-            Estuche Chipi Chipi &copy; HESLAF 2020
+            Octopi &copy; HESLAF 2020
           </Layout.Footer>
         </Layout>
       </Layout>
