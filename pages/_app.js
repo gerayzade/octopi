@@ -15,7 +15,7 @@ const App = ({ Component, pageProps, router, store }) => (
         timeout={TIMEOUT}
         classNames="page-transition"
         loadingComponent={<Loader />}
-        loadingDelay={500}
+        loadingDelay={0}
         loadingTimeout={{ enter: TIMEOUT, exit: 0 }}
         loadingClassNames="loading-indicator"
       >
@@ -23,10 +23,14 @@ const App = ({ Component, pageProps, router, store }) => (
       </PageTransition>
     </Provider>
     <style jsx global>{`
-      .page-transition-enter {
+      .page-transition-enter,
+      .loading-indicator-appear,
+      .loading-indicator-enter  {
         opacity: 0;
       }
-      .page-transition-enter-active {
+      .page-transition-enter-active,
+      .loading-indicator-appear-active,
+      .loading-indicator-enter-active {
         opacity: 1;
         transition: opacity ${TIMEOUT}ms;
       }
@@ -35,15 +39,6 @@ const App = ({ Component, pageProps, router, store }) => (
       }
       .page-transition-exit-active {
         opacity: 0;
-        transition: opacity ${TIMEOUT}ms;
-      }
-      .loading-indicator-appear,
-      .loading-indicator-enter {
-        opacity: 0;
-      }
-      .loading-indicator-appear-active,
-      .loading-indicator-enter-active {
-        opacity: 1;
         transition: opacity ${TIMEOUT}ms;
       }
     `}</style>

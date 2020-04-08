@@ -6,15 +6,12 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 const { Header, Content, Footer, Sider } = Layout;
 
 const PageLayout = ({ children, title }) => {
-  // interactions with sidebar
-  const [sider, setSider] = React.useState({broken: false, collapsed: false});
-  const collapseSider = (collapsed) => setSider({...sider, collapsed: collapsed});
-  const breakSider = (broken) => setSider({...sider, broken: broken});
-  // when component first mounted
+  // use state hook
+  const [sider, setSider] = React.useState({broken: true, collapsed: true});
+  // use effect hook
   React.useEffect(() => {
     // scroll document up
-    window.scrollTo(0,0)
-    // update state if broken
+    window.scrollTo(0,0);
   }, []); 
   return (
     <div className="wrapper">
@@ -42,11 +39,17 @@ const PageLayout = ({ children, title }) => {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout className="page-layout" onClick={() => sider.broken && !sider.collapsed ? collapseSider(true) : null}>
+        <Layout 
+          className="page-layout" 
+          onClick={() => setSider({...sider, collapsed: sider.broken && !sider.collapsed || sider.collapsed})}
+        >
           <Header className="page-header">
             {React.createElement(sider.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
               className: 'trigger',
-              onClick: () => {collapseSider(!sider.collapsed)}
+              onClick: (e) => {
+                e.stopPropagation();
+                setSider({...sider, collapsed: !sider.collapsed});
+              }
             })}
             <h2>{title}</h2>
           </Header>
