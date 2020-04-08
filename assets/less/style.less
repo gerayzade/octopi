@@ -5,11 +5,19 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-// Layout
+// General
 
 .wrapper {
   overflow-x: hidden;
 }
+
+.pane {
+  background-color: #fff;
+  box-shadow: @shadow-3;
+  border-radius: 4px 4px 0 0;
+}
+
+// Layout
 
 .page-sidebar {
   position: fixed;
@@ -45,8 +53,7 @@ body {
 .page-header {
   display: flex;
   align-items: center;
-  background-color: #fff;
-  padding: 0 16px;
+  box-shadow: @shadow-3;
   h2 {
     margin: 0 24px;
   }
@@ -55,7 +62,6 @@ body {
 .page-footer {
   font-size: 12px;
   text-align: center;
-  padding: 16px;
 }
 
 .page-content {
@@ -63,9 +69,9 @@ body {
   min-height: calc(100vh - 138px);
   width: 864px;
   max-width: 100%;
-  background-color: #fff;
   padding: 24px;
   overflow: initial;
+  .pane();
 }
 
 @media screen and (max-width: @screen-lg-max) {
@@ -80,6 +86,18 @@ body {
         pointer-events: none;
       }
     }
+  }
+}
+
+@media screen and (max-width: @screen-sm-max) {
+  .pane {
+    border-radius: 0;
+  }
+
+  .page-content {
+    padding: 8px;
+    margin-top: 16px;
+    .pane();
   }
 }
 
