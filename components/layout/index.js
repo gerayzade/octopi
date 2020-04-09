@@ -1,6 +1,6 @@
-import fetch from 'unfetch';
-import useSWR from 'swr';
 import Head from 'next/head';
+import fetch from 'isomorphic-unfetch';
+import useSWR from 'swr';
 import { Layout } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import { PreloadFonts } from './ResourceLinks';

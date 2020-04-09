@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import fetch from 'unfetch';
+import fetch from 'isomorphic-unfetch';
 import useSWR from 'swr';
 import PageLayout from '~/components/layout';
 
