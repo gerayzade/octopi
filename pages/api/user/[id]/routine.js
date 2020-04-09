@@ -3,24 +3,24 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const getAllActivitiesByUserId = async (req, res) => {
-  // get user's activities
-  if(req.method === 'GET') {
-    const activities = await prisma.activity.findMany({
-      where: { userId: Number(req.query.id) },
-    });
-    res.json(activities);
-  }
-  // create new activity
-  if(req.method === 'POST') {
-    const activity = await prisma.activity.create({ 
-      data: {
-        ...req.body, 
-        user: {
-          connect: { id: Number(req.query.id) }
-        }
-      }
-    });
-    res.json(activity);
+  switch(req.method) {
+    case 'GET':
+      res.status(200).json(
+        await prisma.activity.findMany({
+          where: { userId: Number(req.query.id) },
+        })
+      );
+      break;
+    case 'POST':
+      res.status(200).json(
+        await prisma.activity.create({ 
+          data: {...req.body, user: { connect: { id: Number(req.query.id) } } }
+        })
+      );
+      break;
+    default:
+      res.setHeader('Allow', ['GET', 'PUT']);
+      res.status(405).end(`Method ${method} Not Allowed`);
   }
 } 
 

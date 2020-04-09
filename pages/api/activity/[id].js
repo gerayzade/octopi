@@ -3,20 +3,25 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const getActivityById = async (req, res) => {
-  // get activity data
-  if(req.method === 'GET') {
-    const activity = await prisma.activity.findOne({
-      where: { id: Number(req.query.id) }
-    });
-    res.json(activity);
-  }
-  // update activity data
-  if(req.method === 'PUT') {
-    const activity = await prisma.activity.update({
-      where: { id: Number(req.query.id) },
-      data: req.body
-    });
-    res.json(activity);
+  switch(req.method) {
+    case 'GET':
+      res.status(200).json(
+        await prisma.activity.findOne({
+          where: { id: Number(req.query.id) }
+        })
+      );
+      break;
+    case 'PUT':
+      res.status(200).json(
+        await prisma.activity.update({
+          where: { id: Number(req.query.id) },
+          data: req.body
+        })
+      );
+      break;
+    default:
+      res.setHeader('Allow', ['GET', 'PUT']);
+      res.status(405).end(`Method ${method} Not Allowed`);
   }
 } 
 

@@ -3,17 +3,22 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const getAllUsers = async (req, res) => {
-  // get all users
-  if(req.method === 'GET') {
-    const users = await prisma.user.findMany();
-    res.json(users);
-  }
-  // creare new user
-  if (req.method === 'POST') {
-    const user = await prisma.user.create({ 
-      data: req.body 
-    });
-    res.json(user);
+  switch(req.method) {
+    case 'GET':
+      res.status(200).json(
+        await prisma.user.findMany()
+      );
+      break;
+    case 'POST':
+      res.status(200).json(
+        await prisma.user.create({ 
+          data: req.body 
+        })
+      );
+      break;
+    default:
+      res.setHeader('Allow', ['GET', 'PUT']);
+      res.status(405).end(`Method ${method} Not Allowed`);
   }
 } 
 
