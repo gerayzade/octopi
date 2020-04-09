@@ -31,7 +31,6 @@
     "@zeit/next-less": "^1.0.1",
     "antd": "^4.1.1",
     "dotenv": "^8.2.0",
-    "heroku-cli": "^7.0.9",
     "isomorphic-unfetch": "^3.0.0",
     "less": "^3.11.1",
     "moment": "^2.24.0",
