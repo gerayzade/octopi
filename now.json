@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "env": {
+    "DATABASE_URL": "@database_url"
+  },
+  "build": {
+    "config": { 
+      "distDir": "out" 
+    },
+    "env": {
+      "DATABASE_URL": "@database_url"
+    }
+  },
+  "routes": [
+    {
+      "src": "/fonts/(.*)",
+      "headers": { "cache-control": "public, max-age=31536000, immutable" },
+      "dest": "/fonts/$1"
+    }
+  ]
+}
