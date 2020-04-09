@@ -1,10 +1,16 @@
+import fetch from 'unfetch';
+import useSWR from 'swr';
 import Head from 'next/head';
 import { Layout } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import { PreloadFonts } from './ResourceLinks';
 import SidebarMenu from './SidebarMenu';
+import UserMenu from './UserMenu';
+
+const fetcher = url => fetch(url).then(r => r.json());
 
 const PageLayout = ({ children, title }) => {
+  const { data: user } = useSWR('/api/user/1', fetcher);
   // use state hook
   const [sider, setSider] = React.useState({broken: true, collapsed: true});
   const toggleCollapse = (collapsed) =>  setSider({...sider, collapsed: collapsed});
@@ -46,6 +52,7 @@ const PageLayout = ({ children, title }) => {
               onClick: (e) => { e.stopPropagation(); toggleCollapse(!sider.collapsed); }
             })}
             <h2>{title}</h2>
+            {user && <UserMenu user={user} />}
           </Layout.Header>
           <Layout.Content className="page-content">
             {children}

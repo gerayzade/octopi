@@ -1,7 +1,5 @@
 import { Menu } from 'antd';
-import { 
-  HomeOutlined 
-} from '@ant-design/icons';
+import { HomeOutlined } from '@ant-design/icons';
 
 const SidebarMenu = () => (
   <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>

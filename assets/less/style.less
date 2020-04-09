@@ -19,15 +19,18 @@ body {
 
 // Layout
 
+.page-layout {
+  transition: .3s;
+  transition-property: margin, transform;
+}
+
 .page-sidebar {
   position: fixed;
   z-index: 10;
   left: 0;
-  overflow: auto;
   height: 100vh;
-  transition: transform .3s, opacity .3s;
-  width: 250px !important;
-  max-width: 100% !important;
+  overflow: auto;
+  transition: transform .3s;
   &.collapsed {
     transform: translate(-100%);
   }
@@ -36,18 +39,13 @@ body {
   }
   &_logo {
     color: #fff;
-    line-height: 30px;
+    line-height: 32px;
     text-align: center;
     font-variant: small-caps;
-    font-size: 22px;
+    font-size: 24px;
     padding: 0 16px;
     margin: 16px 16px 12px;
   }
-}
-
-.page-layout {
-  transition: .3s;
-  transition-property: margin-left, transform;
 }
 
 .page-header {
@@ -56,6 +54,13 @@ body {
   box-shadow: @shadow-3;
   h2 {
     margin: 0 24px;
+  }
+  &_user-menu {
+    margin-left: auto;
+    span {
+      font-weight: 600;
+      margin-left: 16px;
+    }
   }
 }
 
