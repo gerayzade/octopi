@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "export": "npm run build && next export",
-    "postinstall": "prisma generate"
+    "heroku-postbuild": "npm run build"
   },
   "browserslist": {
     "production": [
