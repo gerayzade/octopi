@@ -17,7 +17,7 @@ const getAllActivitiesByUserId = async (req, res) => {
     case 'POST':
       res.status(200).json(
         await prisma.activity.create({ 
-          data: {...req.body, user: { connect: { id: Number(req.query.id) } } }
+          data: {...req.body, User: { connect: { id: Number(req.query.id) } } }
         })
       );
       break;

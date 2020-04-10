@@ -14,18 +14,21 @@
 @import (inline) '~@fullcalendar/core/main.css';
 @import (inline) '~@fullcalendar/timegrid/main.css';
 
-.fc.fc-unthemed {
-  * {
-    border-color: #e8e8e8;
+
+[class^="fc-"] {
+  border-color: #e8e8e8 !important;
+}
+.fc-today {
+  background-color: @primary-1 !important;
+}
+.fc-event {
+  cursor: pointer;
+  background-color: @primary-color !important;
+  &.fc-short .fc-title {
+    font-size: 1em !important;
   }
-  .fc-today {
-    background-color: @primary-1;
-  }
-  .fc-event {
-    background-color: @primary-color;
-    &.fc-short .fc-title {
-      font-size: 1em;
-    }
+  &.fc-external {
+    padding: 4px 6px;
   }
 }
 

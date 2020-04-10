@@ -2,7 +2,7 @@ import withRedux from 'next-redux-wrapper';
 import { Provider } from 'react-redux';
 import { PageTransition } from 'next-page-transitions';
 import { reduxStore } from '~/store';
-import Loader from '~/components/Loader';
+import Loader from '~/components/common/Loader';
 
 import '~/assets/less/main.less';
 

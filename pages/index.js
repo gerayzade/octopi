@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
 import useSWR from 'swr';
 import PageLayout from '~/components/layout';
+import Loader from '~/components/common/Loader';
 
 const RoutineSchedule = dynamic(() => 
   import('~/components/calendar/RoutineSchedule'), { ssr: false });
@@ -12,9 +13,7 @@ const Index = () => {
   const { data: activities } = useSWR('/api/user/1/routine', fetcher);
   return(
     <PageLayout title="Daily Plan">
-      <div className="daily-plan">
-        {activities && <RoutineSchedule events={activities} />}
-      </div>
+      {activities ? <RoutineSchedule events={activities}/> : <Loader />}
     </PageLayout>
   )
 }
