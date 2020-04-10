@@ -51,9 +51,9 @@ const RoutineSchedule = ({ events }) => {
     }
   }
   return (
-    <Row gutter={[24, 24]}>
+    <Row gutter={{xs: 16, md: 24}}>
       <Col span={24} md={16}>
-        <div className="pane">
+        <div className="daily-plan pane">
           <FullCalendar 
             ref={calendarRef}
             plugins={[ timeGridPlugin, interactionPlugin ]} 
