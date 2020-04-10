@@ -35,18 +35,12 @@ body {
 
 // Layout
 
-.page-layout {
-  transition: .3s;
-  transition-property: margin, transform;
-}
-
 .page-sidebar {
   position: fixed;
   z-index: 10;
   left: 0;
   height: 100vh;
   overflow: auto;
-  transition: transform .3s;
   &.collapsed {
     transform: translate(-100%);
   }
@@ -72,7 +66,6 @@ body {
   left: 0;
   z-index: 9;
   width: 100%;
-  transition: padding .3s;
   h2 {
     margin: 0 24px;
   }
@@ -96,6 +89,20 @@ body {
   width: 100%;
   padding: 24px 24px 0;
   overflow: initial;
+}
+
+// Layout transitions
+
+.page-transition-enter-done {
+  .page-layout {
+    transition: margin .3s, transform .3s;
+  }
+  .page-header {
+    transition: padding .3s;
+  }
+  .page-sidebar {
+    transition: transform .3s;
+  }
 }
 
 @media screen and (max-width: @screen-sm-max) {
