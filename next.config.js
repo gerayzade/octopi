@@ -28,7 +28,7 @@ module.exports = withPlugins(
 	], 
 	{
 		webpack: (config, { isServer, webpack }) => {
-			const env = dotenv.config().parsed;
+			const env = dotenv.config().parsed || process.env;
 			const envKeys = Object.keys(env).reduce((prev, next) => {
 				prev[`process.env.${next}`] = JSON.stringify(env[next]);
 				return prev;
