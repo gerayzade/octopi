@@ -33,7 +33,7 @@ const LoginForm = ({ dispatch, loginFailed }) => {
           closable
           onClose={closeAlert}
         />}
-        <Typography.Title level={2}>Welcome !</Typography.Title>
+        <Typography.Title level={2}>Welcome to Octopi!</Typography.Title>
         <Form.Item name="email" rules={[{ required: true, type: 'email' }]}>
           <Input prefix={<MailOutlined />} placeholder="E-mail" />
         </Form.Item>
@@ -50,10 +50,10 @@ const LoginForm = ({ dispatch, loginFailed }) => {
         </Form.Item>
         <Form.Item className="login-form_button">
           <Button type="primary" htmlType="submit" className="login-form_button">
-            Log in
+            Sign In
           </Button>
           <div className="login-form_register">
-            Or <a href="#0">register now!</a>
+            Or <a href="#0">Register now!</a>
           </div>
         </Form.Item>
         <div className="login-form_logo">

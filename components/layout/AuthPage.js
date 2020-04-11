@@ -48,7 +48,7 @@ const AuthPage = ({ children, title, isLoggedIn }) => {
             {React.createElement(sider.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
               onClick: (e) => { e.stopPropagation(); toggleCollapse(!sider.collapsed); }
             })}
-            <h2>{title}</h2>
+            <h2><strong>{user && user.name.split(' ')[0]}'s</strong> {title}</h2>
             {user && <UserMenu user={user} />}
           </Layout.Header>
           <Layout.Content className="page-content">

@@ -29,7 +29,7 @@ const UserMenu = ({ user }) => (
   <div className="page-header_user-menu">
     <Dropdown overlay={dropdownOverlay}>
       <a href="#0" onClick={e => e.preventDefault()} className="page-header_user-link">
-        <span className="user-menu_name hidden-sm">{user.name}</span>
+        <span className="user-menu_name hidden-sm">{user.email}</span>
         <Avatar icon={<UserOutlined />} />
       </a>
     </Dropdown>
