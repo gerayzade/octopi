@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-unfetch';
 import useSWR from 'swr';
+import Link from 'next/link';
 import { Layout } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import Loader from '~/components/common/Loader';
@@ -32,7 +33,11 @@ const AuthPage = ({ children, title, isLoggedIn }) => {
       <PageHead title={title} />
       <Layout hasSider={true}>
         <Layout.Sider className={'page-sidebar' + (sider.collapsed ? ' collapsed' : '')} width="250">
-          <div className="page-sidebar_logo">Octopi 🐙</div>
+          <div className="page-sidebar_logo">
+            <Link href="/my/schedule">
+              <img src="/img/logo.png" alt="Octopi" />
+            </Link>
+          </div>
           <SidebarMenu />
         </Layout.Sider>
         <Layout 

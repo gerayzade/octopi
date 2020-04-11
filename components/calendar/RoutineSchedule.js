@@ -1,10 +1,16 @@
-import { Row, Col } from 'antd'; 
+import { Row, Col, notification } from 'antd'; 
+import { SmileOutlined } from '@ant-design/icons';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 import { getEventDuration } from '~/utils/calendarFunctions';
 
 const $ = (selector) => document.querySelectorAll(selector)[0];
+const getRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+const openNotification = (message) => {
+  notification.open({message, icon: <SmileOutlined className="icon-primary" />});
+};
 
 const RoutineSchedule = ({ events }) => {
   // state hooks
@@ -33,7 +39,14 @@ const RoutineSchedule = ({ events }) => {
       : clientY >= offset.top
     );
   }
-  const eventClick = () => {
+  const eventClick = ({ el, event }) => {
+    if(el.classList.contains('fc-completed')) {
+      event.setProp('classNames', []);
+    } else {
+      event.setProp('classNames', ['fc-completed']);
+      const randTeam = 
+      openNotification(`${getRandom([5,10,15,20,25])} points for ${getRandom(['Gryffindor','Hufflepuff','Ravenclaw','Slytherin'])}!`);
+    }
   }
   const externalEventDrop = ({ draggedEl }) => {
     // remove event from list
@@ -69,7 +82,11 @@ const RoutineSchedule = ({ events }) => {
             eventDragStop={eventDragStop}
             dragRevertDuration={0}
             height={'auto'}
-            header={false}
+            header={{
+              left: 'prev,next today',
+              center: 'title',
+              right: 'timeGridDay,timeGridWeek'
+            }}
             columnHeader={false}
             allDaySlot={false}
           />

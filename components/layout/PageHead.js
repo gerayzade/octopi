@@ -2,7 +2,8 @@ import Head from 'next/head';
 
 const PreloadFonts = () => {
   const fonts = [
-    { name: 'open-sans-v17-latin', weights: [300, 400, 600, 700] }
+    { name: 'open-sans-v17-latin', weights: [300, 400, 600, 700] },
+    { name: 'open-sans-condensed-v14-latin', weights: [300, 700] }
   ];
   return fonts
     .reduce((acc, font) => [...acc, ...font.weights.map(weight => `/fonts/${font.name}-${weight}.woff2`)], [])

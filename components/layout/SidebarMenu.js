@@ -1,12 +1,22 @@
+import Link from 'next/link';
 import { Menu } from 'antd';
-import { HomeOutlined } from '@ant-design/icons';
+
+const menuItems = [
+  {href: '/my/schedule', title: 'My Daily Plan'}, 
+  {href: '/my/schedule', title: 'My Boost Page'}, 
+  {href: '/my/schedule', title: 'Challenges'}, 
+  {href: '/my/schedule', title: 'Mentors'}
+];
 
 const SidebarMenu = () => (
-  <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-    <Menu.Item key="1">
-      <HomeOutlined />
-      <span>Daily Plan</span>
+  <Menu theme="dark" mode="inline" className="page-sidebar_menu" defaultSelectedKeys={['1']}>
+    {menuItems.map((link, i) => (
+    <Menu.Item key={i}>
+      <Link href={link.href}>
+        <a>{link.title}</a>
+      </Link>
     </Menu.Item>
+    ))}
   </Menu>
 )
 

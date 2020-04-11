@@ -17,45 +17,50 @@ const LoginForm = ({ dispatch, loginFailed }) => {
     setTimeout(() => dispatch(clearLoginError()), 400);
   }
   return (
-    <Form
-      name="login"
-      className="pane login-form"
-      initialValues={{ remember: true }}
-      validateMessages={validateMessages}
-      onFinish={submitForm}
-    >
-      {loginFailed && <Alert
-        message="Login failed"
-        description="Try another email or password"
-        type="error"
-        closable
-        onClose={closeAlert}
-      />}
-      <div className="login-form_logo">🐙</div>
-      <Typography.Title level={2}>Welcome !</Typography.Title>
-      <Form.Item name="email" rules={[{ required: true, type: 'email' }]}>
-        <Input prefix={<MailOutlined />} placeholder="E-mail" />
-      </Form.Item>
-      <Form.Item name="password" rules={[{ required: true }]}>
-        <Input prefix={<LockOutlined />} type="password" placeholder="Password"/>
-      </Form.Item>
-      <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
+    <>
+      <Form
+        name="login"
+        className="pane login-form"
+        initialValues={{ remember: true }}
+        validateMessages={validateMessages}
+        onFinish={submitForm}
+      >
+        {loginFailed && <Alert
+          className="login-form_alert"
+          message="Login failed"
+          description="Try another email or password"
+          type="error"
+          closable
+          onClose={closeAlert}
+        />}
+        <Typography.Title level={2}>Welcome !</Typography.Title>
+        <Form.Item name="email" rules={[{ required: true, type: 'email' }]}>
+          <Input prefix={<MailOutlined />} placeholder="E-mail" />
         </Form.Item>
-        <a className="login-form_forgot" href="#0">
-          Forgot password?
-        </a>
-      </Form.Item>
-      <Form.Item className="login-form_button">
-        <Button type="primary" htmlType="submit" className="login-form_button">
-          Log in
-        </Button>
-        <div className="login-form_register">
-          Or <a href="#0">register now!</a>
+        <Form.Item name="password" rules={[{ required: true }]}>
+          <Input prefix={<LockOutlined />} type="password" placeholder="Password"/>
+        </Form.Item>
+        <Form.Item>
+          <Form.Item name="remember" valuePropName="checked" noStyle>
+            <Checkbox>Remember me</Checkbox>
+          </Form.Item>
+          <a className="login-form_forgot" href="#0">
+            Forgot password?
+          </a>
+        </Form.Item>
+        <Form.Item className="login-form_button">
+          <Button type="primary" htmlType="submit" className="login-form_button">
+            Log in
+          </Button>
+          <div className="login-form_register">
+            Or <a href="#0">register now!</a>
+          </div>
+        </Form.Item>
+        <div className="login-form_logo">
+          <img src="/favicon.png" alt="Octopi" />
         </div>
-      </Form.Item>
-    </Form>
+      </Form>
+    </>
   );
 };
 

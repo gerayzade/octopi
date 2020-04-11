@@ -1,7 +1,7 @@
 :global {
 
 body {
-  background-color: #f0f2f5;
+  background-color: @base-color-2;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -33,7 +33,15 @@ body {
   padding: 24px;
 }
 
+.icon-primary {
+  color: @primary-color;
+}
+
 // Layout
+
+.page-layout {
+  background-color: transparent;
+}
 
 .page-sidebar {
   position: fixed;
@@ -48,13 +56,19 @@ body {
     margin-left: 250px;
   }
   &_logo {
-    color: #fff;
-    line-height: 32px;
+    margin: 88px 16px 12px;
+    img {
+      width: 100%;
+    }
+  }
+  &_menu {
+    font-family: 'Open Sans Condensed';
     text-align: center;
-    font-variant: small-caps;
-    font-size: 24px;
-    padding: 0 16px;
-    margin: 16px 16px 12px;
+    a {
+      text-transform: uppercase;
+      font-size: 20px;
+      font-weight: 300;
+    }
   }
 }
 
@@ -73,12 +87,12 @@ body {
   &_user-menu {
     margin-left: auto;
     span {
-      font-weight: 600;
       margin-left: 16px;
     }
   }
   &_user-link {
     color: @heading-color !important;
+    font-weight: 400;
   }
 }
 
@@ -118,10 +132,21 @@ body {
   &-form {
     width: 100%;
     max-width: 400px;
+    margin-top: 80px;
+    position: relative;
+    &_alert {
+      margin-bottom: 16px;
+    }
     &_logo {
-      color: #000;
-      font-size: 64px;
-      text-align: center;
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translate(-50%, -111%);
+      width: 140px;
+      z-index: -1;
+      img {
+        width: 100%;
+      }
     }
     h2 {
       text-align: center;

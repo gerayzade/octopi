@@ -23,12 +23,43 @@
 }
 .fc-event {
   cursor: pointer;
-  background-color: @primary-color !important;
-  &.fc-short .fc-title {
-    font-size: 1em !important;
+  background-color: @primary-color;
+  &.fc-short {
+    .fc-time {
+      line-height: 1.8;
+    }
+    .fc-title {
+      font-size: 1em !important;
+    }
   }
   &.fc-external {
     padding: 4px 6px;
+    background-color: @base-color-3;
+  }
+  &.fc-completed {
+    .fc-time,
+    .fc-title {
+      color: @base-color-2;
+      text-decoration: line-through;
+    }
+  }
+}
+
+.fc-button-primary {
+  &, 
+  &:disabled {
+    background-color: @primary-color;
+  }
+  &:hover,
+  &:not(:disabled):active, 
+  &:not(:disabled).fc-button-active {
+    background-color: @base-color-2;
+  }
+  &:disabled {
+    pointer-events: none;
+  }
+  &:focus {
+    box-shadow: none !important;
   }
 }
 

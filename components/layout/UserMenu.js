@@ -3,8 +3,8 @@ import { Menu, Dropdown, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 const menuItems = [
-  {href: '/my/profile', title: 'Profile'}, 
-  {href: '/my/schedule', title: 'Daily plan'}
+  {href: '/my/schedule', title: 'Account Settings'}, 
+  {href: '/my/schedule', title: 'Edit Schedule'}
 ];
 
 const dropdownOverlay = (
@@ -19,7 +19,7 @@ const dropdownOverlay = (
     <Menu.Divider />
     <Menu.Item key={menuItems.length}>
       <a href="/logout">
-        Logout
+        Sign Out
       </a>
     </Menu.Item>
   </Menu>
