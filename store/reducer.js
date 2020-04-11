@@ -1,15 +1,36 @@
 import { actionTypes } from './actions';
 
 export const initialState = {
-  menuOpened: false
+  isLoggedIn: false,
+  loginData: { trial: 0 },
+  loginFailed: false
 }
 
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.TOGGLE_MENU:
+    case actionTypes.SUBMIT_LOGIN_FORM:
       return {
         ...state, 
-        menuOpened: action.value
+        loginData: {
+          trial: state.loginData.trial + 1, 
+          ...action.value
+        }
+      }
+    case actionTypes.LOGIN_USER:
+      return {
+        ...state, 
+        isLoggedIn: action.value,
+        loginFailed: !action.value
+      }
+    case actionTypes.CLEAR_LOGIN_ERROR:
+      return {
+        ...state, 
+        loginFailed: false
+      }
+    case actionTypes.UPDATE_AUTH:
+      return {
+        ...state, 
+        isLoggedIn: action.value
       }
     default:
       return state;

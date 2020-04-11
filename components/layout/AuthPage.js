@@ -1,15 +1,15 @@
-import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import useSWR from 'swr';
 import { Layout } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
-import { PreloadFonts } from './ResourceLinks';
+import Loader from '~/components/common/Loader';
 import SidebarMenu from './SidebarMenu';
 import UserMenu from './UserMenu';
+import PageHead from './PageHead';
 
 const fetcher = url => fetch(url).then(r => r.json());
 
-const PageLayout = ({ children, title }) => {
+const AuthPage = ({ children, title, isLoggedIn }) => {
   const { data: user } = useSWR('/api/user/1', fetcher);
   // use state hook
   const [sider, setSider] = React.useState({broken: true, collapsed: true});
@@ -27,17 +27,9 @@ const PageLayout = ({ children, title }) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []); 
-  return (
+  return isLoggedIn ? (
     <div className="wrapper">
-      <Head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* browser tab view */}
-        <title>{title ? 'Octopi | ' + title : 'Octopi'}</title>
-        <link rel="icon" type="image/png" href="/favicon.png" /> 
-        {/* preload assets */}
-        <PreloadFonts />
-      </Head>
+      <PageHead title={title} />
       <Layout hasSider={true}>
         <Layout.Sider className={'page-sidebar' + (sider.collapsed ? ' collapsed' : '')} width="250">
           <div className="page-sidebar_logo">Octopi 🐙</div>
@@ -63,7 +55,7 @@ const PageLayout = ({ children, title }) => {
         </Layout>
       </Layout>
     </div>
-  );
+  ) : <Loader/>;
 }
 
-export default PageLayout;
+export default AuthPage;

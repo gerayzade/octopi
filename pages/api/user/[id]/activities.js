@@ -1,13 +1,17 @@
 import prisma from '~/prisma';
+import { mergeChildProps } from '~/prisma/functions';
 
 export default async (req, res) => {
   const userId = Number(req.query.id);
   switch(req.method) {
     case 'GET':
       res.status(200).json(
-        await prisma.user.findOne({ 
-          where: { id: userId } 
-        }).activities()
+        mergeChildProps('activity',
+          await prisma.userActivity.findMany({
+            where: { userId: userId },
+            include: { activity: { select: { title: true } } }
+          })
+        )
       );
       break;
     case 'PUT':

@@ -60,6 +60,7 @@ body {
 
 .page-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   box-shadow: @shadow-3;
   position: fixed;
@@ -75,6 +76,9 @@ body {
       font-weight: 600;
       margin-left: 16px;
     }
+  }
+  &_user-link {
+    color: @heading-color !important;
   }
 }
 
@@ -104,6 +108,35 @@ body {
     transition: transform .3s;
   }
 }
+
+// Sign in
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &-form {
+    width: 100%;
+    max-width: 400px;
+    &_logo {
+      color: #000;
+      font-size: 64px;
+      text-align: center;
+    }
+    h2 {
+      text-align: center;
+    }
+    &_forgot {
+      float: right;
+    }
+    &_button {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+// Media
 
 @media screen and (max-width: @screen-sm-max) {
   .hidden-sm {
@@ -138,6 +171,10 @@ body {
       }
     }
   }
+}
+
+@media screen and (min-width: @screen-md) {
+  
 }
 
 @media screen and (min-width: @screen-xl) {

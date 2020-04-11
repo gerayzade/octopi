@@ -2,7 +2,7 @@ import { Row, Col } from 'antd';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
-import { getEventDuration } from '~/lib/calendarFunctions';
+import { getEventDuration } from '~/utils/calendarFunctions';
 
 const $ = (selector) => document.querySelectorAll(selector)[0];
 
