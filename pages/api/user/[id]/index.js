@@ -1,23 +1,19 @@
-import dotenv from 'dotenv';
-import { PrismaClient } from '@prisma/client';
+import prisma from '~/prisma';
 
-dotenv.config();
-
-const prisma = new PrismaClient();
-
-const getUserById = async (req, res) => {
+export default async (req, res) => {
+  const userId = Number(req.query.id);
   switch(req.method) {
     case 'GET':
       res.status(200).json(
         await prisma.user.findOne({
-          where: { id: Number(req.query.id) }
+          where: { id: userId }
         })
       );
       break;
     case 'PUT':
       res.status(200).json(
         await prisma.user.update({
-          where: { id: Number(req.query.id) },
+          where: { id: userId },
           data: req.body
         })
       );
@@ -26,6 +22,4 @@ const getUserById = async (req, res) => {
       res.setHeader('Allow', ['GET', 'PUT']);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
-} 
-
-export default getUserById;
+}

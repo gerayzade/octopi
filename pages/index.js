@@ -10,7 +10,7 @@ const RoutineSchedule = dynamic(() =>
 const fetcher = url => fetch(url).then(r => r.json());
 
 const Index = () => {
-  const { data: activities } = useSWR('/api/user/1/routine', fetcher);
+  const { data: activities } = useSWR('/api/user/1/activities', fetcher);
   return(
     <PageLayout title="Daily Plan">
       {activities ? <RoutineSchedule events={activities}/> : <Loader />}

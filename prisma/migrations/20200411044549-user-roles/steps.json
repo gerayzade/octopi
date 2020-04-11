@@ -50,17 +50,6 @@
           "model": "User",
           "field": "id"
         },
-        "directive": "id"
-      }
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "User",
-          "field": "id"
-        },
         "directive": "default"
       }
     },
@@ -77,6 +66,17 @@
       },
       "argument": "",
       "value": "autoincrement()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "id"
+        },
+        "directive": "id"
+      }
     },
     {
       "tag": "CreateField",
@@ -131,6 +131,13 @@
     {
       "tag": "CreateField",
       "model": "User",
+      "field": "password",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
       "field": "name",
       "type": "String",
       "arity": "Optional"
@@ -139,7 +146,7 @@
       "tag": "CreateField",
       "model": "User",
       "field": "role",
-      "type": "Role",
+      "type": "String",
       "arity": "Required"
     },
     {
@@ -165,13 +172,13 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "USER"
+      "value": "\"USER\""
     },
     {
       "tag": "CreateField",
       "model": "User",
       "field": "activities",
-      "type": "Activity",
+      "type": "UserActivity",
       "arity": "List"
     },
     {
@@ -243,8 +250,122 @@
       "arity": "Required"
     },
     {
+      "tag": "CreateModel",
+      "model": "UserActivity"
+    },
+    {
       "tag": "CreateField",
-      "model": "Activity",
+      "model": "UserActivity",
+      "field": "id",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "UserActivity",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "UserActivity",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "UserActivity",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "autoincrement()"
+    },
+    {
+      "tag": "CreateField",
+      "model": "UserActivity",
+      "field": "startTime",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "UserActivity",
+      "field": "endTime",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "UserActivity",
+      "field": "activity",
+      "type": "Activity",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "UserActivity",
+          "field": "activity"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "UserActivity",
+          "field": "activity"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[activityId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "UserActivity",
+          "field": "activity"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "UserActivity",
+      "field": "activityId",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "UserActivity",
       "field": "user",
       "type": "User",
       "arity": "Required"
@@ -254,7 +375,7 @@
       "location": {
         "path": {
           "tag": "Field",
-          "model": "Activity",
+          "model": "UserActivity",
           "field": "user"
         },
         "directive": "relation"
@@ -266,7 +387,7 @@
         "tag": "Directive",
         "path": {
           "tag": "Field",
-          "model": "Activity",
+          "model": "UserActivity",
           "field": "user"
         },
         "directive": "relation"
@@ -280,7 +401,7 @@
         "tag": "Directive",
         "path": {
           "tag": "Field",
-          "model": "Activity",
+          "model": "UserActivity",
           "field": "user"
         },
         "directive": "relation"
@@ -290,7 +411,7 @@
     },
     {
       "tag": "CreateField",
-      "model": "Activity",
+      "model": "UserActivity",
       "field": "userId",
       "type": "Int",
       "arity": "Required"

@@ -1,11 +1,6 @@
-import dotenv from 'dotenv';
-import { PrismaClient } from '@prisma/client';
+import prisma from '~/prisma';
 
-dotenv.config();
-
-const prisma = new PrismaClient();
-
-const getAllUsers = async (req, res) => {
+export default async (req, res) => {
   switch(req.method) {
     case 'GET':
       res.status(200).json(
@@ -20,9 +15,7 @@ const getAllUsers = async (req, res) => {
       );
       break;
     default:
-      res.setHeader('Allow', ['GET', 'PUT']);
+      res.setHeader('Allow', ['GET', 'POST']);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
-} 
-
-export default getAllUsers;
+}
