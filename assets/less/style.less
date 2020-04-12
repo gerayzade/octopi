@@ -324,6 +324,44 @@ body {
   }
 }
 
+.challenges {
+  & > h4 {
+    margin-bottom: 8px;
+  }
+  &_list {
+    margin: 8px 0 0;
+  }
+  &_active {
+    display: flex;
+    margin-bottom: 8px;
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 2px;
+      flex-shrink: 0;
+      margin-right: 16px;
+    }
+    &-inner {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      h4 {
+        width: 100%;
+        font-weight: normal;
+        font-size: 18px;
+        strong {
+          font-weight: bold;
+        }
+        & + div {
+          margin-right: auto;
+        }
+      }
+    }
+  }
+}
+
 // Media
 
 @media screen and (max-width: @screen-sm-max) {
