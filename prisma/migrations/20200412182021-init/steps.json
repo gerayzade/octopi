@@ -146,7 +146,7 @@
       "tag": "CreateField",
       "model": "User",
       "field": "role",
-      "type": "String",
+      "type": "Role",
       "arity": "Required"
     },
     {
@@ -172,7 +172,7 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "\"USER\""
+      "value": "USER"
     },
     {
       "tag": "CreateField",
@@ -250,6 +250,70 @@
       "arity": "Required"
     },
     {
+      "tag": "CreateField",
+      "model": "Activity",
+      "field": "daysOfWeek",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Activity",
+          "field": "daysOfWeek"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Activity",
+          "field": "daysOfWeek"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "\"[\\\"1\\\",\\\"2\\\",\\\"3\\\",\\\"4\\\",\\\"5\\\",\\\"6\\\",\\\"7\\\"]\""
+    },
+    {
+      "tag": "CreateField",
+      "model": "Activity",
+      "field": "weight",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Activity",
+          "field": "weight"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Activity",
+          "field": "weight"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "0"
+    },
+    {
       "tag": "CreateModel",
       "model": "UserActivity"
     },
@@ -309,6 +373,70 @@
       "field": "endTime",
       "type": "String",
       "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "UserActivity",
+      "field": "daysOfWeek",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "UserActivity",
+          "field": "daysOfWeek"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "UserActivity",
+          "field": "daysOfWeek"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "\"[\\\"1\\\",\\\"2\\\",\\\"3\\\",\\\"4\\\",\\\"5\\\",\\\"6\\\",\\\"7\\\"]\""
+    },
+    {
+      "tag": "CreateField",
+      "model": "UserActivity",
+      "field": "weight",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "UserActivity",
+          "field": "weight"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "UserActivity",
+          "field": "weight"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "0"
     },
     {
       "tag": "CreateField",

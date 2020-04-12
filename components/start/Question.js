@@ -9,7 +9,7 @@ const Question = ({ title, id, children, next, confirm, condition = true, testAc
       {testActive === id && (
       <div className="entry-test_next">
         <Button type="primary" onClick={() => confirm(next)}>
-          { next === false ? 'Submit' : 'Next'}
+          { (next === false || (next instanceof Array && next.includes(false))) ? 'Submit' : 'Next'}
         </Button>
       </div>
       )}

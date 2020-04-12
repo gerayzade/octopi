@@ -14,8 +14,8 @@ const openNotification = (message) => {
 
 const RoutineSchedule = ({ events }) => {
   // state hooks
-  const [calendarEvents, setCalendarEvents] = React.useState(events.slice(0,8));
-  const [externalEvents, setExternalEvents] = React.useState(events.slice(9));
+  const [calendarEvents, setCalendarEvents] = React.useState(events.slice(0,10));
+  const [externalEvents, setExternalEvents] = React.useState(events.slice(11));
   // effect hook
   React.useEffect(() => {
     // add event props to draggable element
@@ -27,6 +27,8 @@ const RoutineSchedule = ({ events }) => {
       })
     });
   }, []);
+  // weight
+  const getWeight = (id) => events.find(event => event.id == id).weight;
   // ref hook
   const calendarRef = React.useRef(null);
   // get calendar API from component ref
@@ -44,8 +46,8 @@ const RoutineSchedule = ({ events }) => {
       event.setProp('classNames', []);
     } else {
       event.setProp('classNames', ['fc-completed']);
-      const randTeam = 
-      openNotification(`${getRandom([5,10,15,20,25])} points for ${getRandom(['Gryffindor','Hufflepuff','Ravenclaw','Slytherin'])}!`);
+      const weight = parseInt(getWeight(event.id));
+      if(weight) openNotification(`Added ${weight} points for completing activity!`);
     }
   }
   const externalEventDrop = ({ draggedEl }) => {

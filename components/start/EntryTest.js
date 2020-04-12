@@ -77,8 +77,8 @@ const EntryTest = ({ dispatch, testActive }) => {
 
       <Question id={6} title="What is your goal?" confirm={confirmAnswer} condition={answers[5] !== 0} next={8}>
         <Radio.Group onChange={(e) => answerQuestion(6, e.target.value)} value={answers[6]}>
-          {['Stay in tonus','Calm down','Lose weight','Boost immune system','Build muscle','No preferences'].map(label => (
-            <Radio value={strToSlug(label)} style={{display: 'block', marginBottom: 8}}>{label}</Radio>
+          {['Stay in tonus','Calm down','Lose weight','Boost immune system','Build muscle','No preferences'].map((label,i) => (
+            <Radio value={strToSlug(label)} style={{display: 'block', marginBottom: 8}} key={i}>{label}</Radio>
           ))}
         </Radio.Group>
       </Question>
