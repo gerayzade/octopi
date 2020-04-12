@@ -6,7 +6,7 @@ export const initialState = {
   loginData: { trial: 0 },
   loginFailed: false,
   // entry test
-  testActive: 1,
+  testActive: 0,
   testAnswers: {},
   testPassed: false
 }
@@ -36,6 +36,11 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state, 
         isLoggedIn: action.value
+      }
+    case actionTypes.START_TEST:
+      return {
+        ...state, 
+        testActive: 1
       }
     case actionTypes.ADD_TEST_ANSWER:
       return {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { addTestAnswer, passTest } from '~/store/actions';
-import { Typography, Radio, TimePicker, Cascader, Select } from 'antd';
+import { addTestAnswer, startTest, passTest } from '~/store/actions';
+import { Typography, Radio, TimePicker, Cascader, Button } from 'antd';
 import { SmileOutlined } from '@ant-design/icons';
 import Question from './Question';
 import { strToSlug } from '~/utils/helpers';
@@ -22,7 +22,7 @@ const areas = addValues(categories).map(category => ({
 
 const { Text, Title } = Typography;
 
-const EntryTest = ({ dispatch, testActive, testAnswers, testPassed }) => {
+const EntryTest = ({ dispatch, testActive }) => {
   const [answers, setAnswer] = React.useState({});
   const answerQuestion = (id, value, key) => {
     if(key !== undefined)
@@ -41,6 +41,12 @@ const EntryTest = ({ dispatch, testActive, testAnswers, testPassed }) => {
     <div className="entry-test">
       <Title level={2}>Hola, mi amigo! <SmileOutlined className="icon-primary"/></Title>
       <Text>Take this <Text mark>3-minute test</Text> to let us help you build your perfect day!</Text>
+
+      {!testActive && (
+      <div className="entry-test_next">
+        <Button type="primary" onClick={() => dispatch(startTest())}>Start</Button>
+      </div>
+      )}
 
       <Question id={1} title="Do you work at the moment?" confirm={confirmAnswer} next={[3,2]}>
         <Radio.Group onChange={(e) => answerQuestion(1, e.target.value)} value={answers[1]}>
@@ -98,7 +104,5 @@ const EntryTest = ({ dispatch, testActive, testAnswers, testPassed }) => {
 }
 
 export default connect(state => ({
-  testActive: state.testActive,
-  testAnswers: state.testAnswers,
-  testPassed: state.testPassed
+  testActive: state.testActive
 }))(EntryTest);

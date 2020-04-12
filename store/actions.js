@@ -3,6 +3,7 @@ export const actionTypes = {
   LOGIN_USER: 'LOGIN_USER',
   CLEAR_LOGIN_ERROR: 'CLEAR_LOGIN_ERROR',
   UPDATE_AUTH: 'UPDATE_AUTH',
+  START_TEST: 'START_TEST',
   ADD_TEST_ANSWER: 'ADD_TEST_ANSWER',
   PASS_TEST: 'PASS_TEST'
 }
@@ -21,6 +22,10 @@ export const clearLoginError = () => ({
 
 export const updateAuth = (value) => ({
   type: actionTypes.UPDATE_AUTH, value
+});
+
+export const startTest = () => ({
+  type: actionTypes.START_TEST
 });
 
 export const addTestAnswer = (key, value, next) => ({

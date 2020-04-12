@@ -3,10 +3,10 @@ import { useRouter } from 'next/router';
 import { Menu } from 'antd';
 
 const menuItems = [
-  {href: '/my/schedule', title: 'My Daily Plan'}, 
-  {href: '/my/courses', title: 'My Boost Page'}, 
-  {href: '/my/schedule', title: 'Challenges'}, 
-  {href: '/my/schedule', title: 'Mentors'}
+  {href: '/my/schedule', title: 'Daily Plan'}, 
+  {href: '/my/courses', title: 'Boost Page'}, 
+  {href: '/my/challenges', title: 'Challenges'}, 
+  {href: '/my/mentors', title: 'Mentors'}
 ];
 
 const SidebarMenu = () => {
