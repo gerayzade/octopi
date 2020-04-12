@@ -1,9 +1,14 @@
 import { actionTypes } from './actions';
 
 export const initialState = {
+  // auth
   isLoggedIn: false,
   loginData: { trial: 0 },
-  loginFailed: false
+  loginFailed: false,
+  // entry test
+  testActive: 1,
+  testAnswers: {},
+  testPassed: false
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -31,6 +36,20 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state, 
         isLoggedIn: action.value
+      }
+    case actionTypes.ADD_TEST_ANSWER:
+      return {
+        ...state,
+        testAnswers: {
+          ...state.testActive,
+          [action.key]: action.value
+        }, 
+        testActive: action.next
+      }
+    case actionTypes.PASS_TEST:
+      return {
+        ...state, 
+        testPassed: true
       }
     default:
       return state;

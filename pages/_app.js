@@ -9,10 +9,11 @@ import Loader from '~/components/common/Loader';
 import '~/assets/less/main.less';
 
 const TIMEOUT = 400;
+const LAYOUT = '.page-layout';
 
 const OctopiApp = ({ Component, pageProps, router, store }) => {
   React.useEffect(() => {
-    const tokenExists = !!(localStorage.getItem('octoPI') || sessionStorage.getItem('octoPI'))
+    const tokenExists = !!(localStorage.getItem('octoPI') || sessionStorage.getItem('octoPI'));
     // update store
     store.dispatch(updateAuth(tokenExists));
     // redirects
@@ -35,21 +36,21 @@ const OctopiApp = ({ Component, pageProps, router, store }) => {
         </PageTransition>
       </Provider>
       <style jsx global>{`
-        .page-transition-enter,
-        .loading-indicator-appear,
-        .loading-indicator-enter  {
+        .page-transition-enter ${LAYOUT},
+        .loading-indicator-appear ${LAYOUT},
+        .loading-indicator-enter ${LAYOUT}  {
           opacity: 0;
         }
-        .page-transition-enter-active,
-        .loading-indicator-appear-active,
-        .loading-indicator-enter-active {
+        .page-transition-enter-active ${LAYOUT},
+        .loading-indicator-appear-active ${LAYOUT},
+        .loading-indicator-enter-active ${LAYOUT} {
           opacity: 1;
           transition: opacity ${TIMEOUT}ms;
         }
-        .page-transition-exit {
+        .page-transition-exit ${LAYOUT} {
           opacity: 1;
         }
-        .page-transition-exit-active {
+        .page-transition-exit-active ${LAYOUT} {
           opacity: 0;
           transition: opacity ${TIMEOUT}ms;
         }

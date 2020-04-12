@@ -40,8 +40,11 @@ body {
 // Layout
 
 .page-layout {
-  background-color: @base-color-2;
+  background-color: #f0f2f5;
   min-height: 100vh;
+  &.dark {
+    background-color: @base-color-2;
+  }
 }
 
 .page-sidebar {
@@ -56,9 +59,6 @@ body {
   }
   &:not(.collapsed) + .page-layout {
     margin-left: 250px;
-  }
-  & + .page-layout {
-    background-color: #f0f2f5;
   }
   &_logo {
     margin: 88px 16px 12px;
@@ -112,6 +112,11 @@ body {
   min-height: calc(100vh - 138px);
   padding: 24px 24px 0;
   margin: 64px auto 0;
+  &.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 // Layout transitions
@@ -131,9 +136,6 @@ body {
 // Sign in
 
 .login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   &-form {
     width: 100%;
     max-width: 400px;
@@ -259,6 +261,31 @@ body {
         }
       }
     }
+  }
+}
+
+// Entry Test
+
+.entry-test {
+  &_question {
+    margin-top: 24px;
+    h4 {
+      font-weight: normal;
+      max-width: 440px;
+    }
+    &.disabled {
+      opacity: .4;
+      pointer-events: none;
+    }
+    .ant-cascader-picker {
+      display: block;
+      width: 350px;
+      max-width: 100%;
+      margin-bottom: 8px;
+    }
+  }
+  &_next {
+    margin-top: 24px;
   }
 }
 
