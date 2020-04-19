@@ -1,8 +1,6 @@
 export const actionTypes = {
   SUBMIT_LOGIN_FORM: 'LOGIN_FORM_SUBMIT',
-  LOGIN_USER: 'LOGIN_USER',
-  CLEAR_LOGIN_ERROR: 'CLEAR_LOGIN_ERROR',
-  UPDATE_AUTH: 'UPDATE_AUTH',
+  SHOW_LOGIN_ERROR: 'SHOW_LOGIN_ERROR',
   START_TEST: 'START_TEST',
   ADD_TEST_ANSWER: 'ADD_TEST_ANSWER',
   PASS_TEST: 'PASS_TEST'
@@ -12,16 +10,8 @@ export const submitLoginForm = (value) => ({
   type: actionTypes.SUBMIT_LOGIN_FORM, value
 });
 
-export const loginUser = (value) => ({
-  type: actionTypes.LOGIN_USER, value
-});
-
-export const clearLoginError = () => ({
-  type: actionTypes.CLEAR_LOGIN_ERROR
-});
-
-export const updateAuth = (value) => ({
-  type: actionTypes.UPDATE_AUTH, value
+export const showLoginError = (value) => ({
+  type: actionTypes.SHOW_LOGIN_ERROR, value
 });
 
 export const startTest = () => ({

@@ -16,7 +16,8 @@ model User {
   id              Int               @default(autoincrement()) @id
   createdAt       DateTime          @default(now())
   email           String            @unique
-  password        String
+  hash            String
+  salt            String
   name            String?
   role            Role              @default(USER)
   activities      UserActivity[]
@@ -27,7 +28,7 @@ model Activity {
   title           String
   startTime       String          
   endTime         String     
-  daysOfWeek      String            @default("[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\"]")   
+  daysOfWeek      String            @default("[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"0\"]")   
   weight          Int               @default(0)  
 }
 
@@ -35,7 +36,7 @@ model UserActivity {
   id              Int               @id @default(autoincrement())
   startTime       String
   endTime         String
-  daysOfWeek      String            @default("[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\"]")
+  daysOfWeek      String            @default("[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"0\"]")
   weight          Int               @default(0)  
   activity        Activity          @relation(fields: [activityId], references: [id])
   activityId      Int

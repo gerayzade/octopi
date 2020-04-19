@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import useUser from '~/utils/auth/hooks';
 import AuthPage from '~/components/layout/AuthPage';
 import { Row, Col, Typography, Button } from 'antd';
 
@@ -8,9 +9,10 @@ const challenges = [
   {}
 ];
 
-const MyChallenges = ({ isLoggedIn }) => {
+const MyChallenges = () => {
+  const user = useUser({ redirectTo: '/' });
   return(
-    <AuthPage isLoggedIn={isLoggedIn} title="Challenges">
+    <AuthPage title="Challenges" user={user}>
       <div className="challenges">
         <Title level={4}>Challenge your friends</Title>
         <Text>You can do it both in groups and separetely!</Text>
@@ -37,6 +39,4 @@ const MyChallenges = ({ isLoggedIn }) => {
   )
 }
 
-export default connect(state => ({
-  isLoggedIn: state.isLoggedIn
-}))(MyChallenges);
+export default connect()(MyChallenges);

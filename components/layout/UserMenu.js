@@ -18,7 +18,7 @@ const dropdownOverlay = (
     ))}
     <Menu.Divider />
     <Menu.Item key={menuItems.length}>
-      <a href="/logout">
+      <a href="/api/auth/logout">
         Sign Out
       </a>
     </Menu.Item>

@@ -3,10 +3,9 @@ import { SmileOutlined } from '@ant-design/icons';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
-import { getEventDuration } from '~/utils/calendarFunctions';
+import { getEventDuration } from '~/utils/schedule';
 
 const $ = (selector) => document.querySelectorAll(selector)[0];
-const getRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 const openNotification = (message) => {
   notification.open({message, icon: <SmileOutlined className="icon-primary" />});

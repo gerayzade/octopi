@@ -1,21 +1,15 @@
-import prisma from '~/prisma';
+import { getAllActivities } from '~/utils/crud/activities';
 
 export default async (req, res) => {
   switch(req.method) {
-    case 'GET':
-      res.status(200).json(
-        await prisma.activity.findMany()
-      );
+    case 'GET': {
+      const data = await getAllActivities();
+      res.status(200).json(data);
       break;
-    case 'POST':
-      res.status(200).json(
-        await prisma.activity.create({ 
-          data: req.body 
-        })
-      );
-      break;
-    default:
-      res.setHeader('Allow', ['GET', 'POST']);
+    }
+    default: {
+      res.setHeader('Allow', ['GET']);
       res.status(405).end(`Method ${method} Not Allowed`);
+    }
   }
 }

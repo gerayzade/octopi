@@ -1,17 +1,12 @@
-import fetch from 'isomorphic-unfetch';
-import useSWR from 'swr';
 import Link from 'next/link';
 import { Layout } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
-import Loader from '~/components/common/Loader';
+import Loader from '../common/Loader';
 import SidebarMenu from './SidebarMenu';
 import UserMenu from './UserMenu';
 import PageHead from './PageHead';
 
-const fetcher = url => fetch(url).then(r => r.json());
-
-const AuthPage = ({ children, title, isLoggedIn }) => {
-  const { data: user } = useSWR('/api/user/1', fetcher);
+const AuthPage = ({ children, title, user }) => {
   // use state hook
   const [sider, setSider] = React.useState({broken: true, collapsed: true});
   const toggleCollapse = (collapsed) =>  setSider({...sider, collapsed: collapsed});
@@ -28,7 +23,7 @@ const AuthPage = ({ children, title, isLoggedIn }) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []); 
-  return isLoggedIn ? (
+  return user?.id ? (
     <div className="wrapper">
       <PageHead title={title} />
       <Layout hasSider={true}>
@@ -60,7 +55,7 @@ const AuthPage = ({ children, title, isLoggedIn }) => {
         </Layout>
       </Layout>
     </div>
-  ) : <Loader/>;
+  ) : <Loader />;
 }
 
 export default AuthPage;

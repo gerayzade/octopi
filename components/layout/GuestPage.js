@@ -1,9 +1,9 @@
 import { Layout } from 'antd';
-import Loader from '~/components/common/Loader';
+import Loader from '../common/Loader';
 import PageHead from './PageHead';
 
-const GuestPage = ({ children, title, isLoggedIn }) => {
-  return !isLoggedIn ? (
+const GuestPage = ({ children, title, user }) => {
+  return user === null ? (
     <div className="wrapper">
       <PageHead title={title} />
       <Layout className="page-layout dark">
@@ -12,7 +12,7 @@ const GuestPage = ({ children, title, isLoggedIn }) => {
         </Layout.Content>
       </Layout>
     </div>
-  ) : <Loader/>;
+  ) : <Loader />
 }
 
 export default GuestPage;

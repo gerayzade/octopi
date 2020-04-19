@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import useUser from '~/utils/auth/hooks';
 import AuthPage from '~/components/layout/AuthPage';
 import { Row, Col, Typography, Button } from 'antd';
 
@@ -15,9 +16,10 @@ const mentors = [
   { name: 'Naseem Massey', title: 'Head of IT at Greenway Studio' }
 ]
 
-const MyMentors = ({ isLoggedIn }) => {
+const MyMentors = () => {
+  const user = useUser({ redirectTo: '/' });
   return(
-    <AuthPage isLoggedIn={isLoggedIn} title="Growth Mentors">
+    <AuthPage title="Growth Mentors" user={user}>
       <div className="mentors">
         <Title level={4}>Connect with Great People</Title>
         <Text>Who will shair their personal experiences and knowledge</Text>
@@ -44,6 +46,4 @@ const MyMentors = ({ isLoggedIn }) => {
   )
 }
 
-export default connect(state => ({
-  isLoggedIn: state.isLoggedIn
-}))(MyMentors);
+export default connect()(MyMentors);

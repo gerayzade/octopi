@@ -131,7 +131,14 @@
     {
       "tag": "CreateField",
       "model": "User",
-      "field": "password",
+      "field": "hash",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "salt",
       "type": "String",
       "arity": "Required"
     },
@@ -279,7 +286,7 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "\"[\\\"1\\\",\\\"2\\\",\\\"3\\\",\\\"4\\\",\\\"5\\\",\\\"6\\\",\\\"7\\\"]\""
+      "value": "\"[\\\"1\\\",\\\"2\\\",\\\"3\\\",\\\"4\\\",\\\"5\\\",\\\"6\\\",\\\"0\\\"]\""
     },
     {
       "tag": "CreateField",
@@ -404,7 +411,7 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "\"[\\\"1\\\",\\\"2\\\",\\\"3\\\",\\\"4\\\",\\\"5\\\",\\\"6\\\",\\\"7\\\"]\""
+      "value": "\"[\\\"1\\\",\\\"2\\\",\\\"3\\\",\\\"4\\\",\\\"5\\\",\\\"6\\\",\\\"0\\\"]\""
     },
     {
       "tag": "CreateField",

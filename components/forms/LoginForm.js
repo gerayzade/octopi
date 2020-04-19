@@ -1,20 +1,21 @@
 import { connect } from 'react-redux';
-import { submitLoginForm, clearLoginError } from '~/store/actions';
+import { submitLoginForm, showLoginError } from '~/store/actions';
 import { Form, Input, Button, Checkbox, Alert, Typography } from 'antd';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 
-const LoginForm = ({ dispatch, loginFailed }) => {
+const LoginForm = ({ dispatch, login, loginError }) => {
   const validateMessages = {
     required: 'Please enter your ${name}',
     types: {
       email: 'It is not a valid ${name}'
     }
   };
-  const submitForm = (values) => {
-    dispatch(submitLoginForm(values));
+  const submitForm = async (formData) => {
+    dispatch(submitLoginForm(formData));
+    await login(formData);
   };
   const closeAlert = () => {
-    setTimeout(() => dispatch(clearLoginError()), 400);
+    setTimeout(() => dispatch(showLoginError(false)), 400);
   }
   return (
     <>
@@ -25,10 +26,10 @@ const LoginForm = ({ dispatch, loginFailed }) => {
         validateMessages={validateMessages}
         onFinish={submitForm}
       >
-        {loginFailed && <Alert
+        {loginError && <Alert
           className="login-form_alert"
           message="Login failed"
-          description="Try another email or password"
+          description={loginError}
           type="error"
           closable
           onClose={closeAlert}
@@ -65,5 +66,5 @@ const LoginForm = ({ dispatch, loginFailed }) => {
 };
 
 export default connect(state => ({
-  loginFailed: state.loginFailed
+  loginError: state.loginError
 }))(LoginForm);

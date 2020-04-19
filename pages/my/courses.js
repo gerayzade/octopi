@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import useUser from '~/utils/auth/hooks';
 import AuthPage from '~/components/layout/AuthPage';
 import { Col, Row, Typography, Button } from 'antd';
 
@@ -16,10 +17,11 @@ const topics = [
   'Health','Math & Logic','Personal Development'
 ]
 
-const MyCourses = ({ isLoggedIn }) => {
+const MyCourses = () => {
+  const user = useUser({ redirectTo: '/' });
   const [active, setCourse] = React.useState({...courses[0], i: 0});
   return(
-    <AuthPage isLoggedIn={isLoggedIn} title="Current Boost Status">
+    <AuthPage title="Current Boost Status" user={user}>
       <Row gutter={{xs: 16, md: 24}}>
         <Col span={24} md={9}>
           <div className="course-list">
@@ -85,6 +87,4 @@ const MyCourses = ({ isLoggedIn }) => {
   )
 }
 
-export default connect(state => ({
-  isLoggedIn: state.isLoggedIn
-}))(MyCourses);
+export default connect()(MyCourses);

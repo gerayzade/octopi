@@ -2,9 +2,8 @@ import { actionTypes } from './actions';
 
 export const initialState = {
   // auth
-  isLoggedIn: false,
   loginData: { trial: 0 },
-  loginFailed: false,
+  loginError: false,
   // entry test
   testActive: 0,
   testAnswers: {},
@@ -21,16 +20,10 @@ export const rootReducer = (state = initialState, action) => {
           ...action.value
         }
       }
-    case actionTypes.LOGIN_USER:
+    case actionTypes.SHOW_LOGIN_ERROR:
       return {
         ...state, 
-        isLoggedIn: action.value,
-        loginFailed: !action.value
-      }
-    case actionTypes.CLEAR_LOGIN_ERROR:
-      return {
-        ...state, 
-        loginFailed: false
+        loginError: action.value
       }
     case actionTypes.UPDATE_AUTH:
       return {

@@ -3,7 +3,6 @@ const withImages = require('next-optimized-images');
 const withFonts = require('next-fonts');
 const withLess = require('@zeit/next-less');
 const withPurgeCss = require('next-purgecss');
-const dotenv = require('dotenv');
   
 module.exports = withPlugins(
 	[
@@ -27,15 +26,7 @@ module.exports = withPlugins(
 		}]
 	], 
 	{
-		webpack: (config, { isServer, webpack }) => {
-			const env = dotenv.config().parsed || process.env;
-			const envKeys = Object.keys(env).reduce((prev, next) => {
-				prev[`process.env.${next}`] = JSON.stringify(env[next]);
-				return prev;
-			}, {});
-			// replace all env vars in project
-			config.plugins.push(new webpack.DefinePlugin(envKeys))
-
+		webpack: (config, { isServer }) => {
 			if (!isServer) {
 				config.node = {
 					fs: 'empty'
