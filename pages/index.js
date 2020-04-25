@@ -12,7 +12,10 @@ const Login = ({ dispatch }) => {
   const login = async (formData) =>
     await axios.post('/api/auth/login', formData)
       .then(() => Router.push('/my/schedule'))
-      .catch(error => dispatch(showLoginError(error.response.data)));
+      .catch(error => {
+        const msg = error.response.data;
+        dispatch(showLoginError(typeof msg === 'string' ? msg : 'Server error'));
+      });
 
   return (
     <GuestPage title="Log In" user={user}>
