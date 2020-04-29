@@ -10,7 +10,11 @@ export const encryptSession = (session) => {
   return Iron.seal(session, TOKEN_SECRET, Iron.defaults);
 }
 
-export const getSession = async (req) => {
+export const getSession = async (req, res = false) => {
   const token = getTokenCookie(req);
-  return token && Iron.unseal(token, TOKEN_SECRET, Iron.defaults);
+  const session = token && Iron.unseal(token, TOKEN_SECRET, Iron.defaults);
+  
+  !session && res && res.status(401).end(`Unauthorized`);
+
+  return session;
 }

@@ -62,7 +62,16 @@ body {
   background-color: #f0f2f5;
   min-height: 100vh;
   &.dark {
+    position: relative;
     background-color: @base-color-2;
+    &::before {
+      .layer();
+      content: '';
+      background-image: url('../img/ocean.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: .15;
+    }
   }
 }
 

@@ -2,7 +2,8 @@ import { getSession } from '~/utils/auth/iron';
 import { getUserActivities, updateUserActivities } from '~/utils/crud/activities';
 
 export default async (req, res) => {
-  const session = await getSession(req);
+  const session = await getSession(req, res);
+  if(!session) return;
   
   switch(req.method) {
     case 'GET': {
