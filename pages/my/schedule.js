@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'; 
 import dynamic from 'next/dynamic';
-import fetch from 'isomorphic-unfetch';
-import useSWR from 'swr';
 import useUser from '~/utils/auth/hooks';
+import useSWR from 'swr';
+import fetch from 'isomorphic-unfetch';
 import AuthPage from '~/components/layout/AuthPage';
 import Loader from '~/components/common/Loader';
 import EntryTest from '~/components/start/EntryTest';

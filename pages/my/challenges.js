@@ -6,11 +6,17 @@ import { Row, Col, Typography, Button } from 'antd';
 const { Title, Text } = Typography;
 
 const challenges = [
-  {}
+  {
+    title: 'Hack-Cov-19',
+    group: true,
+    initiator: 'SUP.VC',
+    description: 'Boosting startup skills during lockdown period',
+  }
 ];
 
 const MyChallenges = () => {
   const user = useUser({ redirectTo: '/' });
+
   return(
     <AuthPage title="Challenges" user={user}>
       <div className="challenges">
@@ -23,10 +29,13 @@ const MyChallenges = () => {
             <div className="pane challenges_active">
               <img src="https://www.hackcov19.com/assets/img/wallpaper.jpg" alt="hackcov19" />
               <div className="challenges_active-inner">
-                <Title level={4}><strong>Hack-Cov-19</strong> Group Challenge</Title>
+                <Title level={4}>
+                  <strong>{challenge.title}</strong>
+                  <span>{challenge.group ? 'Group Challenge' : 'Challenge'}</span>
+                </Title>
                 <div>
-                  <Text>Boosting startup skills during lockdown period</Text><br/>
-                  <Text>Created by: <strong>SUP.VC</strong></Text>
+                  <Text>{challenge.description}</Text><br/>
+                  <Text>Created by: <strong>{challenge.initiator}</strong></Text>
                 </div>
                 <Button type="primary" ghost>Leave</Button>
               </div>

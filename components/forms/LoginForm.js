@@ -3,6 +3,8 @@ import { submitLoginForm, showLoginError } from '~/store/actions';
 import { Form, Input, Button, Checkbox, Alert, Typography } from 'antd';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 
+const { Title } = Typography;
+
 const LoginForm = ({ dispatch, login, loginError }) => {
   const validateMessages = {
     required: 'Please enter your ${name}',
@@ -34,7 +36,7 @@ const LoginForm = ({ dispatch, login, loginError }) => {
           closable
           onClose={closeAlert}
         />}
-        <Typography.Title level={2}>Welcome to Octopi!</Typography.Title>
+        <Title level={3}>Welcome to Octopi!</Title>
         <Form.Item name="email" rules={[{ required: true, type: 'email' }]}>
           <Input prefix={<MailOutlined />} placeholder="E-mail" />
         </Form.Item>
@@ -54,7 +56,10 @@ const LoginForm = ({ dispatch, login, loginError }) => {
             Sign In
           </Button>
           <div className="login-form_register">
-            Or <a href="#0">Register now!</a>
+            <div className="text-over-line">
+              <span>or</span>
+            </div>
+            <a href="#0">Create a new account</a>
           </div>
         </Form.Item>
         <div className="login-form_logo">

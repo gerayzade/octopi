@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import useUser from '~/utils/auth/hooks';
 import AuthPage from '~/components/layout/AuthPage';
-import { Col, Row, Typography, Button } from 'antd';
+import { Row, Col, Typography, Button } from 'antd';
 
 const { Title, Paragraph, Text } = Typography;
 

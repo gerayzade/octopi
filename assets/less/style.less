@@ -19,6 +19,13 @@ body {
   height: 100%;
 }
 
+.abs-middle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .loader {
   display: flex;
   align-items: center;
@@ -35,6 +42,18 @@ body {
 
 .icon-primary {
   color: @primary-color;
+}
+
+.text-over-line {
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #d9d9d9;
+  margin: 15px 0;
+  span {
+    .abs-middle();
+    background-color: #fff;
+    padding: 0 5px;
+  }
 }
 
 // Layout
@@ -154,11 +173,14 @@ body {
         width: 100%;
       }
     }
-    h2 {
+    h3 {
       text-align: center;
     }
     &_forgot {
       float: right;
+    }
+    &_register {
+      text-align: center;
     }
     &_button {
       width: 100%;

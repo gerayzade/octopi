@@ -19,7 +19,7 @@ const useUser = ({ redirectTo, redirectIfFound } = {}) => {
       Router.push(redirectTo);
     }
   }, [redirectTo, redirectIfFound, finished, hasUser]);
-
+  
   return error ? null : user;
 }
 
