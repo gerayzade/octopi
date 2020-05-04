@@ -31,7 +31,7 @@ const MyChallenges = () => {
               <div className="challenges_active-inner">
                 <Title level={4}>
                   <strong>{challenge.title}</strong>
-                  <span>{challenge.group ? 'Group Challenge' : 'Challenge'}</span>
+                  <span> {challenge.group ? 'Group Challenge' : 'Challenge'}</span>
                 </Title>
                 <div>
                   <Text>{challenge.description}</Text><br/>
