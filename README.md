@@ -1,2 +1,2 @@
 # Octopi
-Hack Covid-19
+Hack Covid-19 Demo
